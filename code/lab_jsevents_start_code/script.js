@@ -8,11 +8,18 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const newListItem = document.createElement("li");
+    const button = document.createElement("button");
     
     newListItem.innerText = input.value;
+    button.innerText = "Delete!"
 
     list.appendChild(newListItem);
-    console.log("button clicked")
+    list.appendChild(button);
+    console.log("button clicked");
     console.log(input);
+
+
+
+
 })
 
