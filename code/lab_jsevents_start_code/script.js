@@ -25,32 +25,41 @@ form.addEventListener("submit", (event) => {
     const button = document.createElement("button");
     button.id = "Button_" + list.childElementCount;
 
-    // const checkbox = document.createElement("checkbox");
-    // checkbox.id = "Checkbox_" + list.childElementCount;
+    const checkbox = document.createElement('input');
+    checkbox.type="checkbox";
+    checkbox.id = "Checkbox_" + list.childElementCount;
 
     //button remove event listener
-    // button.addEventListener("click", (event) => {
-    //     list.removeChild(event)
-    // });
+    button.addEventListener("click", (event) => {
+        list.removeChild(event)
+    });
 
     console.log(newListItem);
 
-    newListItem.innerText = input.value;
+    newListItem.innerText = (input.value) + " ⎸";
 
-    button.innerText = "Delete"
+    button.innerText = "Delete";
+    checkbox.innerText ="Complete";
 
     list.appendChild(newListItem);
-    list.appendChild(button);
+    newListItem.appendChild(button);
+    newListItem.appendChild(checkbox);
+
     console.log("button clicked");
     console.log(input);
+
+    input.value = "";
+
 })
 
 
 list.addEventListener("click", (event) => {
+    event.preventDefault();
     // MINE AND RASHAD's
     const buttonClicked = event.target.id; // gets id of delete button user clicked
+    console.log(buttonClicked);
     const button = document.getElementById(buttonClicked); // gets id of indivdual button clicked
-    const listEntry = button.previousSibling; // gets entry associted with delete button buy previousSibling
+    const listEntry = button.parentElement; // gets entry associted with delete button buy previousSibling
     console.log(listEntry); // remove entry
     listEntry.remove();
     button.remove(); // remove button
